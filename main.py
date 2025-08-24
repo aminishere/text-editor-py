@@ -34,6 +34,8 @@ def save_file():
 def new_file():
     text_area.delete("1.0", END)
 
+
+#buttons - open, save, new
 open_button = tk.Button(main_window, text="Open File", command=open_file)
 open_button.pack()
 
@@ -43,8 +45,30 @@ save_button.pack()
 new_button = tk.Button(main_window, text="new file", command = new_file)
 new_button.pack()
 
+
+
+# key-bindings
 main_window.bind("<Control-o>", lambda event: open_file())
 main_window.bind("<Control-s>", lambda event: save_file())
 main_window.bind("<Control-n>", lambda event : new_file())
+
+
+#menu
+menu_bar = tk.Menu(main_window)
+file_menu = tk.Menu(menu_bar, tearoff=0)
+
+file_menu.add_command(label="open", command= open_file)
+file_menu.add_command(label="save", command = save_file)
+file_menu.add_command(label="new", command= new_file)
+file_menu.add_separator()
+file_menu.add_command(label="exit", command= main_window.quit)
+
+
+menu_bar.add_cascade(label="file", menu = file_menu)
+main_window.config(menu=menu_bar)
+
+
+
+
 
 main_window.mainloop()
