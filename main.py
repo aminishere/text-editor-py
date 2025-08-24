@@ -7,8 +7,13 @@ main_window = Tk()
 main_window.geometry("600x600")
 main_window.title("editorz")
 
-text_area = tk.Text(main_window, wrap="word", undo=True)
+scrollbar = tk.Scrollbar(main_window)
+scrollbar.pack(side="right", fill="y")
+
+text_area = tk.Text(main_window, yscrollcommand=scrollbar.set)
 text_area.pack(expand=1, fill="both")
+
+scrollbar.config(command=text_area.yview)
 
 
 
