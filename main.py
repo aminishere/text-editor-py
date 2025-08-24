@@ -3,11 +3,13 @@ import tkinter as tk
 from tkinter.filedialog import asksaveasfilename # filedialog for creating files
 
 #create main window
-stimulator_window = Tk()
-stimulator_window.geometry("600x600")
-stimulator_window.title("editorz")
+main_window = Tk()
+main_window.geometry("600x600")
+main_window.title("editorz")
+
+text_area = tk.Text(main_window, wrap="word", undo=True)
+text_area.pack(expand=1, fill="both")
 
 
 
-
-stimulator_window.mainloop()
+main_window.mainloop()
