@@ -26,4 +26,6 @@ def open_file():
 open_button = tk.Button(main_window, text="Open File", command=open_file)
 open_button.pack()
 
+main_window.bind("<Control-o>", lambda event: open_file())
+
 main_window.mainloop()
