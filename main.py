@@ -23,9 +23,22 @@ def open_file():
             text_area.insert("1.0", file.read())
 
 
+#save-file
+def save_file():
+    file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("text files", "*.txt"), ("all files", "*.*")])
+    if file_path:
+        with open (file_path, "w") as file:
+            file.write(text_area.get("1.0", END))
+
+
+
 open_button = tk.Button(main_window, text="Open File", command=open_file)
 open_button.pack()
 
+save_button = tk.Button(main_window, text = "save file", command=save_file)
+save_button.pack()
+
 main_window.bind("<Control-o>", lambda event: open_file())
+main_window.bind("<Control-s>", lambda event: save_file())
 
 main_window.mainloop()
